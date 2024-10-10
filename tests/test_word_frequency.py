@@ -1,6 +1,6 @@
 # tests/test_word_frequency.py
 import unittest
-from faker import Faker
+from src.faker_util import Faker
 from src.word_frequency import WordFrequency
 import os
 
@@ -55,6 +55,33 @@ class TestWordFrequency(unittest.TestCase):
         word_frequency = WordFrequency("non_existent_file.txt")
         with self.assertRaises(FileNotFoundError):
             word_frequency.counter()
+
+    def test_ignore_punctuation_and_numbers(self):
+        # Create a test file with punctuation and numbers
+        test_file_path = "punctuation_numbers_file.txt"
+        with open(test_file_path, 'w') as file:
+            file.write("Hello, world! This is a test. Testing, testing, 1, 2, 3...")
+
+        word_frequency = WordFrequency(test_file_path)
+        result = word_frequency.counter()
+
+        # Check that numbers are ignored and only words are counted
+        expected_result = [
+            ('testing', 2),
+            ('a', 1), 
+            ('hello', 1),
+            ('is', 1),
+            ('test', 1),
+            ('this', 1),
+            ('world', 1)
+        ]
+
+        
+        # Compare the actual result with the expected result
+        self.assertEqual(result, expected_result)
+
+        # Clean up the test file
+        os.remove(test_file_path)
 
 if __name__ == '__main__':
     unittest.main()

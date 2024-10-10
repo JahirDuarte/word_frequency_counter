@@ -1,5 +1,5 @@
 # src/word_frequency.py
-import string
+import re  # Importar re para expresiones regulares
 from collections import Counter
 
 class WordFrequency:
@@ -8,9 +8,10 @@ class WordFrequency:
 
     def clean_word(self, word):
         """
-        This function removes punctuation from a word and converts it to lowercase.
+        This function removes punctuation and numbers from a word and converts it to lowercase.
         """
-        return word.strip(string.punctuation).lower()
+        cleaned_word = re.sub(r'[^a-zA-Z]', '', word).lower()
+        return cleaned_word
 
     def counter(self):
         try:
@@ -18,8 +19,9 @@ class WordFrequency:
             with open(self.file_path, 'r') as file:
                 text = file.read()
 
-            # Split the text into words and clean each word
-            words = [self.clean_word(word) for word in text.split() if word]
+            # Split the text into words, clean each word, and filter out empty words
+            words = [self.clean_word(word) for word in text.split()]
+            words = [word for word in words if word]  # Delete empty words
 
             # Count the frequency of each word
             word_count = Counter(words)
