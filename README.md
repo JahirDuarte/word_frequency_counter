@@ -1,37 +1,37 @@
 # Word Frequency Counter
 
-## Descripción
+## Description
 
-- Proyecto desarrollado como prueba de código para Cart.com
-- Este proyecto en Python cuenta la frecuencia de palabras en un archivo de texto. 
-- Las palabras se consideran de manera insensible a mayúsculas y minúsculas
-- Se ignora la puntuación y se ordenan las palabras por su frecuencia en orden descendente. 
-- El código está estructurado en una clase y se incluye un conjunto de pruebas automatizadas.
+- Project developed as a coding test for Cart.com.
+- This Python project counts the frequency of words in a text file.
+- Words are treated case-insensitively.
+- Punctuation is ignored, and words are sorted by frequency in descending order.
+- The code is structured in a class, and a set of automated tests is included.
+- The code has been implemented following the PEP 8 style guide for Python code formatting.
 
-## Estructura del Proyecto
+## Project Architechture
+- src/word_frequency.py: Main file containing the WordFrequencyCounter class.
+- tests/test_word_frequency.py: Test file using unittest and Faker to test various use cases.
 
-- `src/word_frequency.py`: Archivo principal que contiene la clase `WordFrequencyCounter`.
-- `tests/test_word_frequency.py`: Archivo de pruebas con `unittest` y `Faker` para probar distintos casos de uso.
+## Requirements.txt
 
-## Requisitos
+- Python 3.8 or higher
+- Additional packages:
+  - faker (to generate random texts for testing)
+  - unittest (Python's standard library for testing)
 
-- Python 3.8 o superior
-- Paquetes adicionales: 
-  - `faker` (para generar textos aleatorios en las pruebas)
-  - `unittest` (librería estándar de Python para pruebas)
-
-### Configuración del Entorno Virtual
-- Puedes crear un entorno virtual y activar el entorno usando los siguientes comandos (Linux):
+### Virtual Environment Setup
+- You can create and activate a virtual environment using the following commands (Linux):
 
     ```bash
     $ python3 -m venv env
     $ source env/bin/activate
     $ pip install -r requirements.txt
 
-## Uso del programa
-- Coloca el archivo de texto que quieres analizar en el directorio raíz del proyecto o en cualquier otra ubicación.
-- Ejecuta el programa desde la línea de comandos, proporcionando la ruta al archivo de texto como argumento.
-- Ejemplo:
+## Program Usage
+- Place the text file you want to analyze in the project's root directory or any other location.
+- Run the program from the command line, providing the path to the text file as an argument.
+- Example:
 
     - Input
     $ python src/word_frequency.py src/sample.txt
@@ -43,11 +43,10 @@
     this: 2
     only: 1
 
-- Para ejecutar el script que genera palabras y párrafos de texto aleatorios, utiliza el siguiente comando en la terminal:
-
+- To run the script that generates random words and paragraphs, use the following command in the terminal:
     ```bash
     $ python src/faker_util.py
 
-## Pruebas
-- Para ejecutar todas las pruebas, navega al directorio raíz del proyecto y usa el siguiente comando:
+## Automated tests
+- To run all tests, navigate to the project's root directory and use the following command: 
     $ python -m unittest discover tests

@@ -36,11 +36,13 @@ class WordFrequency:
             raise Exception(f"An error occurred: {e}")
 
 if __name__ == "__main__":
+    # Open the script and expect one parameter (the sample text file, e.g., sample.txt)
     import sys
     if len(sys.argv) != 2:
-        print("Usage: python word_frequency.py <file_path>")
+        print("Usage: python word_frequency.py sample.txt")
         sys.exit(1)
 
+    # Open the specified text file and count the frequency of words using the WordFrequency class
     file_path = sys.argv[1]
     word_frequency = WordFrequency(file_path)
     result = word_frequency.counter()
